@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Box Icons -->
+       <!-- Boxicons -->
+    <link
+    href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+    rel="stylesheet"/>
+   <!-- Glide js -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/themer/css/styles.css">
+    <!-- Glidejs -->
+    
+
+    <title>Unganisha Networks</title>
+	
+	<link type="text/css" rel="stylesheet" href="/assets/erpnext/dist/css/erpnext-web.bundle.WS7BEZA4.css">
+	<link type="text/css" rel="stylesheet" href="/assets/webshop/dist/css/webshop-web.bundle.5JGUNQU3.css">
+	<link type="text/css" rel="stylesheet" href="/assets/frappe/dist/css/login.bundle.253NHAD4.css">
+			
+		
+	<script>
+		window.frappe = {};
+		frappe.ready_events = [];
+		frappe.ready = function(fn) {
+			frappe.ready_events.push(fn);
+		}
+		window.dev_server = {{ dev_server }};
+		window.socketio_port = {{ (frappe.socketio_port or 9000) }};
+		window.show_language_picker = {{ show_language_picker or 'false' }};
+	</script>
+</head>
+<body frappe-session-status="{{ 'logged-in' if frappe.session.user != 'Guest' else 'logged-out'}}" data-path="{{ path | e }}" {%- if template and template.endswith('.md') %} frappe-content-type="markdown" {%- endif %} class="{{ body_class or ''}}">
+	{% include "public/icons/timeless/icons.svg" %}
+	{% include "public/icons/espresso/icons.svg" %}
+	{%- block banner -%}
+		{% include "templates/includes/banner_extension.html" ignore missing %}
+
+		{% if banner_html -%}
+		{{ banner_html or "" }}
+		{%- endif %}
+	{%- endblock -%}
+
+	{%- block navbar -%}
+		{{ web_block(
+			navbar_template or 'Standard Navbar',
+			values=_context_dict,
+			add_container=0,
+			add_top_padding=0,
+			add_bottom_padding=0,
+		) }}
+	{%- endblock -%}
+	
+	{% block content %}
+		{{ content }}
+	{% endblock %}
+
+
+	{%- block footer -%}
+		{{ web_block(
+			footer_template or 'Standard Footer',
+			values=_context_dict,
+			add_container=0,
+			add_top_padding=0,
+			add_bottom_padding=0
+		) }}
+	{%- endblock -%}
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+    <script src="/assets/themer/js/slider.js"></script>
+    <script src="/assets/themer/js/index.js"></script>
+    <!-- Glidejs -->
+    {% block base_scripts %}
+	<!-- js should be loaded in body! -->
+	<script>
+		frappe.boot = {{ boot }}
+		// for backward compatibility of some libs
+		frappe.sys_defaults = frappe.boot.sysdefaults;
+	</script>
+	<script data-web-template='Standard Footer'>
+		frappe.ready(function() {
+			$("#footer-subscribe-button").click(function() {
+		
+				if($("#footer-subscribe-email").val() && validate_email($("#footer-subscribe-email").val())) {
+					$("#footer-subscribe-email").attr('disabled', true);
+					$("#footer-subscribe-button").html("Sending...")
+						.attr("disabled", true);
+					erpnext.subscribe_to_newsletter({
+						email: $("#footer-subscribe-email").val(),
+						callback: function(r) {
+							if(!r.exc) {
+								$("#footer-subscribe-button").html(__("Added"))
+									.attr("disabled", true);
+							} else {
+								$("#footer-subscribe-button").html(__("Error: Not a valid id?"))
+									.addClass("btn-danger").attr("disabled", false);
+								$("#footer-subscribe-email").val("").attr('disabled', false);
+							}
+						}
+					});
+				}
+				else
+					frappe.msgprint(frappe._("Please enter valid email address"))
+			});
+		});
+		</script>
+			<!-- js should be loaded in body! -->
+			<script>
+				frappe.boot = {'lang': 'en', 'sysdefaults': {'float_precision': 3, 'date_format': 'dd-mm-yyyy', 'time_format': 'HH:mm:ss', 'first_day_of_the_week': 'Sunday', 'number_format': '#,###.##'}, 'time_zone': {'system': 'Africa/Nairobi', 'user': 'Africa/Nairobi'}, 'assets_json': {'bootstrap-4-web.bundle.js': '/assets/frappe/dist/js/bootstrap-4-web.bundle.AZ67VXZX.js', 'controls.bundle.js': '/assets/frappe/dist/js/controls.bundle.MPDAV5MN.js', 'data_import_tools.bundle.js': '/assets/frappe/dist/js/data_import_tools.bundle.D3LGJXO4.js', 'desk.bundle.js': '/assets/frappe/dist/js/desk.bundle.YFEMOG4F.js', 'dialog.bundle.js': '/assets/frappe/dist/js/dialog.bundle.GLK3MITQ.js', 'form.bundle.js': '/assets/frappe/dist/js/form.bundle.PWUM6PYM.js', 'frappe-web.bundle.js': '/assets/frappe/dist/js/frappe-web.bundle.WVDRMZFO.js', 'libs.bundle.js': '/assets/frappe/dist/js/libs.bundle.LLRFRX7M.js', 'list.bundle.js': '/assets/frappe/dist/js/list.bundle.VUGXRJWL.js', 'logtypes.bundle.js': '/assets/frappe/dist/js/logtypes.bundle.MJKW7EK3.js', 'onboarding_tours.bundle.js': '/assets/frappe/dist/js/onboarding_tours.bundle.P7QYMXLW.js', 'report.bundle.js': '/assets/frappe/dist/js/report.bundle.B5T5SGVF.js', 'sentry.bundle.js': '/assets/frappe/dist/js/sentry.bundle.UAN6PRDO.js', 'telemetry.bundle.js': '/assets/frappe/dist/js/telemetry.bundle.ZJBT5ETW.js', 'user_profile_controller.bundle.js': '/assets/frappe/dist/js/user_profile_controller.bundle.5FTRDXWL.js', 'video_player.bundle.js': '/assets/frappe/dist/js/video_player.bundle.IOEIXC2G.js', 'web_form.bundle.js': '/assets/frappe/dist/js/web_form.bundle.3CDSCH5P.js', 'form_builder.bundle.js': '/assets/frappe/dist/js/form_builder.bundle.7FZAKRLF.js', 'print_format_builder.bundle.js': '/assets/frappe/dist/js/print_format_builder.bundle.FWG4GC25.js', 'workflow_builder.bundle.js': '/assets/frappe/dist/js/workflow_builder.bundle.IZVHS2EM.js', 'build_events.bundle.js': '/assets/frappe/dist/js/build_events.bundle.BEAKE2FV.js', 'file_uploader.bundle.js': '/assets/frappe/dist/js/file_uploader.bundle.NS6LY7LR.js', 'kanban_board.bundle.js': '/assets/frappe/dist/js/kanban_board.bundle.2KHIS3VS.js', 'desk.bundle.css': '/assets/frappe/dist/css/desk.bundle.ZEQIBSY5.css', 'email.bundle.css': '/assets/frappe/dist/css/email.bundle.3NT6FDF5.css', 'login.bundle.css': '/assets/frappe/dist/css/login.bundle.253NHAD4.css', 'print.bundle.css': '/assets/frappe/dist/css/print.bundle.IWFENBGG.css', 'print_format.bundle.css': '/assets/frappe/dist/css/print_format.bundle.6JXEUYZY.css', 'report.bundle.css': '/assets/frappe/dist/css/report.bundle.FIN4TWQN.css', 'web_form.bundle.css': '/assets/frappe/dist/css/web_form.bundle.H6KT3ESF.css', 'website.bundle.css': '/assets/frappe/dist/css/website.bundle.RKFECSGL.css', 'bank-reconciliation-tool.bundle.js': '/assets/erpnext/dist/js/bank-reconciliation-tool.bundle.O6VT5GN4.js', 'erpnext-web.bundle.js': '/assets/erpnext/dist/js/erpnext-web.bundle.253I7LT4.js', 'erpnext.bundle.js': '/assets/erpnext/dist/js/erpnext.bundle.TMYIKRK4.js', 'item-dashboard.bundle.js': '/assets/erpnext/dist/js/item-dashboard.bundle.RUWDP57M.js', 'point-of-sale.bundle.js': '/assets/erpnext/dist/js/point-of-sale.bundle.DIEIUFM4.js', 'bom_configurator.bundle.js': '/assets/erpnext/dist/js/bom_configurator.bundle.2HAMIVT5.js', 'erpnext-web.bundle.css': '/assets/erpnext/dist/css/erpnext-web.bundle.WS7BEZA4.css', 'erpnext.bundle.css': '/assets/erpnext/dist/css/erpnext.bundle.PBVSWS3L.css', 'erpnext_email.bundle.css': '/assets/erpnext/dist/css/erpnext_email.bundle.UHNYSO7U.css', 'helpdesk.bundle.js': '/assets/helpdesk/dist/js/helpdesk.bundle.HT6IUFDK.js', 'web.bundle.js': '/assets/webshop/dist/js/web.bundle.G2BI5ENU.js', 'webshop-web.bundle.css': '/assets/webshop/dist/css/webshop-web.bundle.5JGUNQU3.css', 'rtl_desk.bundle.css': '/assets/frappe/dist/css-rtl/desk.bundle.5N5ZFL6L.css', 'rtl_email.bundle.css': '/assets/frappe/dist/css-rtl/email.bundle.BHJBIEC7.css', 'rtl_login.bundle.css': '/assets/frappe/dist/css-rtl/login.bundle.Q6WRWRGM.css', 'rtl_print.bundle.css': '/assets/frappe/dist/css-rtl/print.bundle.GJX4YEJD.css', 'rtl_print_format.bundle.css': '/assets/frappe/dist/css-rtl/print_format.bundle.A6MYQXUW.css', 'rtl_report.bundle.css': '/assets/frappe/dist/css-rtl/report.bundle.Z6V7W75G.css', 'rtl_web_form.bundle.css': '/assets/frappe/dist/css-rtl/web_form.bundle.Z5DKYLNC.css', 'rtl_website.bundle.css': '/assets/frappe/dist/css-rtl/website.bundle.5KPNFRDT.css', 'rtl_erpnext-web.bundle.css': '/assets/erpnext/dist/css-rtl/erpnext-web.bundle.7CPRIVON.css', 'rtl_erpnext.bundle.css': '/assets/erpnext/dist/css-rtl/erpnext.bundle.JZKXQR5W.css', 'rtl_erpnext_email.bundle.css': '/assets/erpnext/dist/css-rtl/erpnext_email.bundle.HZOBVZOL.css', 'rtl_webshop-web.bundle.css': '/assets/webshop/dist/css-rtl/webshop-web.bundle.JPUOAQUI.css'}, 'sitename': 'bryan.com'}
+				// for backward compatibility of some libs
+				frappe.sys_defaults = frappe.boot.sysdefaults;
+			</script>
+			<script type="text/javascript" src="/assets/frappe/dist/js/frappe-web.bundle.WVDRMZFO.js"></script>
+	
+	<script type="text/javascript" src="/website_script.js"></script>
+	<script type="text/javascript" src="/assets/erpnext/dist/js/erpnext-web.bundle.253I7LT4.js"></script>
+	<script type="text/javascript" src="/assets/webshop/dist/js/web.bundle.G2BI5ENU.js"></script>
+	<script type="text/javascript" src="/assets/frappe/dist/js/frappe-web.bundle.WVDRMZFO.js"></script>
+	
+		<script>$(() => {
+			class ProductListing {
+				constructor() {
+					let me = this;
+					let is_item_group_page = $(".item-group-content").data("item-group");
+					this.item_group = is_item_group_page || null;
+		
+					let view_type = localStorage.getItem("product_view") || "List View";
+		
+					// Render Product Views, Filters & Search
+					new webshop.ProductView({
+						view_type: view_type,
+						products_section: $('#product-listing'),
+						item_group: me.item_group
+					});
+		
+					this.bind_card_actions();
+				}
+		
+				bind_card_actions() {
+					webshop.webshop.shopping_cart.bind_add_to_cart_action();
+					webshop.webshop.wishlist.bind_wishlist_action();
+				}
+			}
+		
+			new ProductListing();
+		});
+		</script>
+	{{ include_script('frappe-web.bundle.js') }}
+	{% endblock %}
+
+	{%- for link in web_include_js %}
+	{{ include_script(link) }}
+	{%- endfor -%}
+
+	{%- block script %}
+		{% if colocated_js -%}
+			<script>{{ colocated_js }}</script>
+		{%- endif %}
+	{%- endblock %}
+	<!-- csrf_token -->
+	{%- block body_include %}{{ body_include or "" }}{% endblock -%}
+     
+</body>
+</html>

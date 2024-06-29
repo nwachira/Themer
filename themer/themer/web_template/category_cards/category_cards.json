@@ -1,0 +1,95 @@
+{
+ "__unsaved": 1,
+ "creation": "2024-06-27 13:45:38.313379",
+ "docstatus": 0,
+ "doctype": "Web Template",
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 0
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "route1",
+   "fieldtype": "Data",
+   "label": "Route1",
+   "reqd": 0
+  },
+  {
+   "fieldname": "title2",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 0
+  },
+  {
+   "fieldname": "image2",
+   "fieldtype": "Attach Image",
+   "label": "Image",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "route2",
+   "fieldtype": "Data",
+   "label": "Route2",
+   "reqd": 0
+  },
+  {
+   "fieldname": "title3",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 0
+  },
+  {
+   "fieldname": "image3",
+   "fieldtype": "Attach Image",
+   "label": "Image",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "route3",
+   "fieldtype": "Data",
+   "label": "Route3",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "title4",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "image4",
+   "fieldtype": "Attach Image",
+   "label": "Image",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "route4",
+   "fieldtype": "Data",
+   "label": "Route4",
+   "reqd": 0
+  }
+ ],
+ "idx": 12,
+ "modified": "2024-06-29 17:27:19.301572",
+ "modified_by": "Administrator",
+ "module": "Themer",
+ "name": "Category Cards",
+ "owner": "Administrator",
+ "standard": 1,
+ "template": "",
+ "type": "Section"
+}

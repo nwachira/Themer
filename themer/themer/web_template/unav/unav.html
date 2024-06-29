@@ -1,0 +1,37 @@
+
+ {% extends "templates/1base.html" %}
+ {% block content %}
+ 
+    <div class="top-nav">
+      <div class="container d-flex">
+        <p>Order Online Or Call Us: (001) 2222-55555</p>
+        <ul class="d-flex">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="navigation">
+      <div class="nav-center container d-flex">
+        <a href="{{ url_prefix }}{{ home_page or "/" }}" class="logo"><h1>{%- if brand_html -%}
+            {{ brand_html }}
+        {%- elif banner_image -%}
+            <img src='{{ banner_image }}'>
+        {%- else -%}
+            <span>{{ (frappe.get_hooks("brand_html") or [_("Home")])[0] }}</span>
+        {%- endif -%}</h1></a>
+
+    <ul class="nav-list d-flex">
+      {% include "templates/includes/navbar/navbar_items.html" %}
+    
+    </ul>
+
+        
+
+        <div class="hamburger">
+          <i class="bx bx-menu-alt-left"></i>
+        </div>
+      </div>
+    </div>
+  {% endblock %}

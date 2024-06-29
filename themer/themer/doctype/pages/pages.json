@@ -1,0 +1,45 @@
+{
+ "actions": [],
+ "allow_guest_to_view": 1,
+ "allow_rename": 1,
+ "creation": "2024-06-29 14:43:04.001286",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "groups"
+ ],
+ "fields": [
+  {
+   "fieldname": "groups",
+   "fieldtype": "Table",
+   "label": "Groups",
+   "options": "Groupie"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_published_field": "groups",
+ "links": [],
+ "modified": "2024-06-29 15:29:27.238407",
+ "modified_by": "Administrator",
+ "module": "Themer",
+ "name": "Pages",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "route": "pages",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
